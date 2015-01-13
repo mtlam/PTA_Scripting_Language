@@ -7,7 +7,7 @@ import re
 #import numpy as np
 
 # Defaults
-CONFIG_FILE = "config.dat"
+CONFIG_FILE = "test.dat"
 
 PI = 3.14159265359
 UNITS = "RADIANS"
@@ -25,6 +25,7 @@ RADIUS_EARTH = 1.5
 RADIUS_PULSAR = 0.3
 
 BGCOLOR = (0.0, 0.0, 0.0)
+BGCOLOR = (1.0, 1.0, 1.0)
 FGCOLOR = (0.0, 0.0, 0.0)
 N_FRAMES = 1
 RANDOM_SEED = 1
@@ -32,6 +33,7 @@ N_STARS = 100
 SKYBOX = 100
 SPHERE_RESOLUTION = 101j
 SIZE = (600, 400)
+SIZE = (1200,800)
 
 CAMERA_ZOOM = 3
 CAMERA_AZIMUTH = 0
