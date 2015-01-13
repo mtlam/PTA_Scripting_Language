@@ -7,7 +7,7 @@ import re
 #import numpy as np
 
 # Defaults
-CONFIG_FILE = "test.dat"
+CONFIG_FILE = "config.dat"
 
 PI = 3.14159265359
 UNITS = "RADIANS"
