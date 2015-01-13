@@ -32,6 +32,7 @@ RANDOM_SEED = 1
 N_STARS = 100
 SKYBOX = 100
 SPHERE_RESOLUTION = 101j
+PULSE_RESOLUTION = 500
 SIZE = (600, 400)
 SIZE = (1200,800)
 
@@ -111,6 +112,11 @@ for line in lines:
                     if value == None:
                         raise IndexError("Require one integer value")
                     SPHERE_RESOLUTION = int(value.group(0))*1j
+                elif m.group(1).upper() == "PULSEPTS":
+                    value = re.search("[0-9.]*[0-9]+",line)
+                    if value == None:
+                        raise IndexError("Require one integer value")
+                    PULSE_RESOLUTION = int(value.group(0))
                 elif m.group(1).upper() == "SIZE":
                     xy = re.findall("[0-9.]*[0-9]+",line)
                     if len(xy) != 2:

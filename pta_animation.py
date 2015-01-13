@@ -221,9 +221,9 @@ class Pulsar:
         return sphere
 
     def plot_pulsetrain(self):
-        self.pulsex = np.linspace(self.xp,0,500) #these do not change
-        self.pulsey = np.linspace(self.yp,0,500)
-        self.pulsez = np.linspace(self.zp,0,500)         #allow resolution modification
+        self.pulsex = np.linspace(self.xp,0,PULSE_RESOLUTION) #these do not change
+        self.pulsey = np.linspace(self.yp,0,PULSE_RESOLUTION)
+        self.pulsez = np.linspace(self.zp,0,PULSE_RESOLUTION)  
         self.pulser = np.sqrt(self.pulsex**2 + self.pulsey**2 + self.pulsez**2)
         self.Npulses = int(np.ceil(np.max(self.pulser)/(2*np.pi)))+1 #+1 for loop, move this there?
         zpulse = np.zeros_like(self.pulsez)
