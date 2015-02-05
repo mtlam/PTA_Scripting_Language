@@ -20,6 +20,7 @@ from mayavi import mlab
 from mayavi.sources.builtin_surface import BuiltinSurface
 import time
 
+
 # Remove vtk warnings
 # https://github.com/enthought/mayavi/issues/3
 try:
@@ -36,6 +37,8 @@ except NameError:
 
 
 from configuration import *
+
+
 
 
 
@@ -73,7 +76,8 @@ class Pulsar:
         #self.beam2 = self.plot_beam(-1*beamZ,xrot,yrot,zrot)
         self.beams = self.plot_beam2(beamZ,xrot,yrot,zrot)
         self.sphere = self.plot_sphere()
-        self.pulsetrain = self.plot_pulsetrain()
+        if EARTH_ON:
+            self.pulsetrain = self.plot_pulsetrain()
 
         # Animation 
         self.timestep = timestep
@@ -292,7 +296,8 @@ class Pulsar:
             
     def animate(self):
         self.rotate()
-        self.propagate()
+        if EARTH_ON:
+            self.propagate()
     
 
 
@@ -308,19 +313,20 @@ y = RADIUS_EARTH * np.sin(phi) * np.sin(theta)
 z = RADIUS_EARTH * np.cos(phi)
 earth = mlab.mesh(x, y, z,color=COLOR_EARTH)
 '''
-continents_src = BuiltinSurface(source='earth',name='Continents')
-continents_src.data_source.on_ratio = 2
-continents_src.data_source.radius = 2.5
-continents = mlab.pipeline.surface(continents_src,color=(0,0,0))
-sphere = mlab.points3d(0,0,0,scale_mode='none',scale_factor=5,color=COLOR_EARTH,resolution=50)#,opacity=05,name='Earth')
+if EARTH_ON:
+    continents_src = BuiltinSurface(source='earth',name='Continents')
+    continents_src.data_source.on_ratio = 2
+    continents_src.data_source.radius = 2.5
+    continents = mlab.pipeline.surface(continents_src,color=(0,0,0))
+    sphere = mlab.points3d(0,0,0,scale_mode='none',scale_factor=5,color=COLOR_EARTH,resolution=50)#,opacity=05,name='Earth')
 
 #Star field
-
-np.random.seed(RANDOM_SEED)
-x = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
-y = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
-z = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
-mlab.points3d(x,y,z,color=COLOR_STAR,scale_factor=0.5) #0.5
+if STARS_ON:
+    np.random.seed(RANDOM_SEED) #is this needed elsewhere?
+    x = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
+    y = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
+    z = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
+    mlab.points3d(x,y,z,color=COLOR_STAR,scale_factor=0.5) 
 
 
 
@@ -350,7 +356,7 @@ def anim():
         i+=1
         b = time.time()
         print "(%i/%i)"%(i,N_FRAMES)
-        print b-a
+        #print b-a
         yield
     print "Done"
     if not ipython:

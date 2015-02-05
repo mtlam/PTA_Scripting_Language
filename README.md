@@ -74,13 +74,13 @@ N_STARS 100 #Number of stars in skybox
 SKYBOX 100 #Size of the skybox
 SPHERE RESOLUTION 101 #Number of points to render for spheres
 PULSE RESOLUTION 500 #Number of points to render for pulses
+EARTH ON #Typing ON or OFF switches Earth and pulse rendering state
+STARS ON #Typing ON or OFF switches star rendering state
+FILENAME frame%04d.png #Change the default filename output. Must contain an integer formatting argument.
 ```
 
 
 ##To do:
 
-- The output filename format is currently frame%04d.png and is should be modifiable.
-- Should be able to choose what configuration file to read in.
 - Modify the Earth (continents on/off)
 - No stars as default?
-- Turn off pulses, Earth

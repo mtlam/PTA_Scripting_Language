@@ -4,10 +4,15 @@ Simple parser for PTASL
 The use of globals causes a segmentation fault if running twice in iPython
 '''
 import re
+import sys
 #import numpy as np
 
 # Defaults
-CONFIG_FILE = "single_pulsar_config.dat"
+
+if len(sys.argv)==2:
+    CONFIG_FILE = sys.argv[1]
+else:
+    CONFIG_FILE = "config.dat"
 
 PI = 3.14159265359
 UNITS = "RADIANS"
@@ -23,6 +28,9 @@ BEAMN = 20
 BEAMR = 1
 RADIUS_EARTH = 1.5
 RADIUS_PULSAR = 0.3
+
+EARTH_ON = True
+STARS_ON = True
 
 BGCOLOR = (0.0, 0.0, 0.0)
 FGCOLOR = (0.0, 0.0, 0.0)
@@ -78,7 +86,10 @@ for line in lines:
                     value = re.search("[0-9.]*[0-9]+",line)
                     if value == None:
                         raise IndexError("Require %s as one value"%L)
-                    exec("BEAM%s = float(value.group(0))"%L)
+                    if L=="N":
+                        exec("BEAM%s = int(value.group(0))"%L) 
+                    else:
+                        exec("BEAM%s = float(value.group(0))"%L) 
                 elif m.group(1).upper() == "FRAMES":
                     value = re.search("[0-9.]*[0-9]+",line)
                     if value == None:
@@ -148,6 +159,16 @@ for line in lines:
                         COLOR_EARTH = rgb
                     elif m.group(2).upper() == "STAR":
                         COLOR_STAR = rgb
+                elif m.group(1).upper() == "EARTH":
+                    if m.group(2).upper() == "ON":
+                        EARTH_ON = True
+                    elif m.group(2).upper() == "OFF":
+                        EARTH_ON = False
+                elif m.group(1).upper() == "STARS":
+                    if m.group(2).upper() == "ON":
+                        STARS_ON = True
+                    elif m.group(2).upper() == "OFF":
+                        STARS_ON = False
                 elif m.group(1).upper() == "RADIUS":
                     value = re.search("[0-9.]*[0-9]+",line)
                     if value == None:
@@ -156,6 +177,9 @@ for line in lines:
                         RADIUS_EARTH = float(value)
                     elif m.group(2).upper() == "PULSAR":
                         RADIUS_PULSAR = float(value)
+                elif m.group(1).upper() == "FILENAME":
+                    # Do checks here and fix this
+                    OUTPUT_FILENAME_FORMAT = line.strip().split()[1]
 
                 elif m.group(1).upper() == "CAMERA":
                     value = re.search("[0-9.]*[0-9]+",line)
@@ -189,3 +213,5 @@ for line in lines:
                     CAMERA_ROTATE_AZIMUTH = cameraunitfunc(float(value.group(0)))
                 elif m.group(2).upper() == "ROTATE" and m.group(3).upper() == "ELEVATION":
                     CAMERA_ROTATE_ELEVATION = cameraunitfunc(float(value.group(0)))
+
+
