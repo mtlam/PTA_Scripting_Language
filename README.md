@@ -10,13 +10,13 @@ PULSAR X Y Z P
 ```
 where X,Y,Z are the coordinates of the center and P is the period. Other options that can be provided include:
 ```
-timestep=0.0
+timestep=0.0 #timestep of rotation
 rotaxis=(0,0,0)
-beamZ=BEAMZ
+beamZ=BEAMZ #defined below
 xrot=0.0
 yrot=0.0
 zrot=0.0
-pulsephase = 0.2
+pulsephase = 0.2 #initial pulse phase, not used currently
 ```
 These arguments are separated by commas, so an example would be:
 ```
@@ -41,9 +41,9 @@ FGCOLOR 0.0 0.0 0.0
 These options require one number.
 
 ```
-BEAMZ 2
-BEAMN 20
-BEAMR 1
+BEAMZ 2 #Height of beam
+BEAMN 20 #Number of panels in the conical beam
+BEAMR 1 #Radius of beam cap
 RADIUS_EARTH 1.5
 RADIUS_PULSAR 0.3
 ```
@@ -70,10 +70,10 @@ PULSAR 0 0 0 0.1 xrot=XROT
 ```
 UNITS RADIANS
 RANDOM_SEED 1 #Random number generator's start seed
-N_STARS 100
-SKYBOX 100
-SPHERE RESOLUTION 101j
-PULSE RESOLUTION 500
+N_STARS 100 #Number of stars in skybox
+SKYBOX 100 #Size of the skybox
+SPHERE RESOLUTION 101 #Number of points to render for spheres
+PULSE RESOLUTION 500 #Number of points to render for pulses
 ```
 
 
