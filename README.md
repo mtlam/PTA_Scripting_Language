@@ -69,7 +69,7 @@ PULSAR 0 0 0 0.1 xrot=XROT
 ##Other Options
 ```
 UNITS RADIANS
-RANDOM_SEED 1
+RANDOM_SEED 1 #Random number generator's start seed
 N_STARS 100
 SKYBOX 100
 SPHERE RESOLUTION 101j
@@ -79,8 +79,8 @@ PULSE RESOLUTION 500
 
 ##To do:
 
--The output filename format is currently frame%04d.png and is should be modifiable.
--Should be able to choose what configuration file to read in.
--Modify the Earth (continents on/off)
--No stars as default?
--Turn off pulses, Earth
+- The output filename format is currently frame%04d.png and is should be modifiable.
+- Should be able to choose what configuration file to read in.
+- Modify the Earth (continents on/off)
+- No stars as default?
+- Turn off pulses, Earth
