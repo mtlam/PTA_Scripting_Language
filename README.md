@@ -61,10 +61,10 @@ CAMERA ROTATE ELEVATION 0
 ##User Variables
 
 This section is not quite complete and only works within the PULSAR DEFINITION. Example:
-
+```
 XROT 40
 PULSAR 0 0 0 0.1 xrot=XROT
-
+```
 
 ##Other Options
 ```
