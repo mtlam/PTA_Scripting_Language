@@ -320,7 +320,7 @@ np.random.seed(RANDOM_SEED)
 x = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
 y = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
 z = np.random.uniform(-SKYBOX,SKYBOX,N_STARS)
-mlab.points3d(x,y,z,color=COLOR_STAR,scale_factor=0.0) #0.5
+mlab.points3d(x,y,z,color=COLOR_STAR,scale_factor=0.5) #0.5
 
 
 
@@ -340,7 +340,7 @@ f.scene.camera.zoom(CAMERA_ZOOM)
 def anim():
     i=0
     while i < N_FRAMES:
-        #a = time.time()
+        a = time.time()
         f.scene.camera.azimuth(CAMERA_ROTATE_AZIMUTH)
         f.scene.camera.elevation(CAMERA_ROTATE_ELEVATION)
         for p in ps:
@@ -348,8 +348,8 @@ def anim():
         f.scene.render()
         f.scene.save(OUTPUT_FILENAME_FORMAT%i)#,size=SIZE) #SIZE needed?
         i+=1
-        #b = time.time()
-        #print "(%i/%i)"%(i,N_FRAMES)
+        b = time.time()
+        print "(%i/%i)"%(i,N_FRAMES)
         print b-a
         yield
     print "Done"

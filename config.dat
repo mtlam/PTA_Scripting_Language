@@ -9,7 +9,8 @@ PULSAR 10 15 -30 0.2 timestep=0.01 rotaxis=(1.5*XROT,0,ZROT) xrot=XROT/2 yrot=YR
 PULSAR -55 -5 5 0.15 timestep=-0.01 rotaxis=(-1.5*XROT,0,-ZROT) xrot=XROT/3 yrot=YROT/4 zrot=2*ZROT
 PULSAR 15 -15 15 0.6 timestep=0.01 rotaxis=(1.5*XROT,0,ZROT) xrot=XROT/2 yrot=YROT/2 zrot=ZROT/2
 PULSAR 30 15 -10 0.2 timestep=-0.01 rotaxis=(0.3*XROT,3*YROT,3*ZROT) xrot=3*XROT yrot=3*YROT zrot=ZROT
-FRAMES 5
+FRAMES 360
 SEED 37
 STARS 400
+SIZE 800 600
 CAMERA ROTATE AZIMUTH 1
