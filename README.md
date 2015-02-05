@@ -2,6 +2,12 @@
 
 Each line of the script is read in order. All options are listed with their default values unless otherwise specified.
 
+To run:
+
+python pta_animation.py [CONFIGURATION_FILE]
+
+If no configuration file is given, the default will be config.dat. See below for scripting options.
+
 ##Pulsar Options
 
 To create a pulsar:
