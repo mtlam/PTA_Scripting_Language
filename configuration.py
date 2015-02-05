@@ -48,8 +48,7 @@ CAMERA_ELEVATION = 90
 CAMERA_ROTATE_AZIMUTH = 0
 CAMERA_ROTATE_ELEVATION = 0
 
-#To add to parser:
-OUTPUT_FILENAME_FORMAT = "frame%04d.png" #how to add this in?
+OUTPUT_FILENAME_FORMAT = "frame%04d.png"
 #Flag to see if you want to animate? = number of frames?
 
 
