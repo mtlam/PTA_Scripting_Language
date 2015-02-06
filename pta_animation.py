@@ -76,7 +76,7 @@ class Pulsar:
         #self.beam2 = self.plot_beam(-1*beamZ,xrot,yrot,zrot)
         self.beams = self.plot_beam2(beamZ,xrot,yrot,zrot)
         self.sphere = self.plot_sphere()
-        if EARTH_ON:
+        if EARTH_ON and PULSE_ON:
             self.pulsetrain = self.plot_pulsetrain()
 
         # Animation 
@@ -296,7 +296,7 @@ class Pulsar:
             
     def animate(self):
         self.rotate()
-        if EARTH_ON:
+        if EARTH_ON and PULSE_ON:
             self.propagate()
     
 

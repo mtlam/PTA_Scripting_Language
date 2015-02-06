@@ -31,6 +31,7 @@ RADIUS_PULSAR = 0.3
 
 EARTH_ON = True
 STARS_ON = True
+PULSE_ON = True
 
 BGCOLOR = (0.0, 0.0, 0.0)
 FGCOLOR = (0.0, 0.0, 0.0)
@@ -168,6 +169,11 @@ for line in lines:
                         STARS_ON = True
                     elif m.group(2).upper() == "OFF":
                         STARS_ON = False
+                elif m.group(1).upper() == "PULSE":
+                    if m.group(2).upper() == "ON":
+                        PULSE_ON = True
+                    elif m.group(2).upper() == "OFF":
+                        PULSE_ON = False
                 elif m.group(1).upper() == "RADIUS":
                     value = re.search("[0-9.]*[0-9]+",line)
                     if value == None:
