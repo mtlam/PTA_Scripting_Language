@@ -337,6 +337,9 @@ for PULSAR in PULSARS:
 mlab.view(CAMERA_AZIMUTH,CAMERA_ELEVATION)
 f = mlab.gcf()
 f.scene.camera.zoom(CAMERA_ZOOM)
+f.scene.anti_aliasing_frames = ANTIALIASING
+
+
 
 #mlab.show()
 #raise SystemExit
@@ -349,14 +352,16 @@ def anim():
         a = time.time()
         f.scene.camera.azimuth(CAMERA_ROTATE_AZIMUTH)
         f.scene.camera.elevation(CAMERA_ROTATE_ELEVATION)
+        f.scene.disable_render= True
         for p in ps:
             p.animate()
+        f.scene.disable_render = False
         f.scene.render()
         f.scene.save(OUTPUT_FILENAME_FORMAT%i)#,size=SIZE) #SIZE needed?
         i+=1
         b = time.time()
         print "(%i/%i)"%(i,N_FRAMES)
-        #print b-a
+        print b-a
         yield
     print "Done"
     if not ipython:

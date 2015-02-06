@@ -42,6 +42,7 @@ SKYBOX = 100
 SPHERE_RESOLUTION = 101j
 PULSE_RESOLUTION = 500
 SIZE = (600, 400)
+ANTIALIASING = 8
 
 CAMERA_ZOOM = 3
 CAMERA_AZIMUTH = 0
@@ -132,6 +133,11 @@ for line in lines:
                         raise IndexError("Require XY as two values")
                     xy = tuple(map(float,xy))
                     SIZE = xy
+                elif m.group(1).upper() == "ANTIALIASING":
+                    value = re.search("[0-9.]*[0-9]+",line)
+                    if value == None:
+                        raise IndexError("Require one integer value")
+                    ANTIALIASING = int(value.group(0))
 
 
 
