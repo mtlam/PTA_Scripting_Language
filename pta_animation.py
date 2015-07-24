@@ -247,7 +247,7 @@ class Pulsar:
         self.rotation = self.timestep * (2*np.pi/self.period)
 
 
-        R = np.matrix([[np.cos(self.rotation),-np.sin(self.rotation),0],[np.sin(self.rotation),np.cos(self.rotation),0],[0,0,1]])
+        R = np.matrix([[np.cos(self.rotation),-np.sin(self.rotation),0],[np.sin(self.rotation),np.cos(self.rotation),0],[0,0,1]]) #SHOULD THIS JUST BE COS AND SIN?
             
         RXneg = np.matrix([[1,0,0],[0,cos(-self.xrotaxis),-sin(-self.xrotaxis)],[0,sin(-self.xrotaxis),cos(-self.xrotaxis)]])
         RXpos = np.matrix([[1,0,0],[0,cos(self.xrotaxis),-sin(self.xrotaxis)],[0,sin(self.xrotaxis),cos(self.xrotaxis)]])
